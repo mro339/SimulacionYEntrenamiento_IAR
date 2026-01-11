@@ -1,3 +1,7 @@
+
+Lo destacado de la carpeta
+Códigos Python para un Robot Autónomo usan lógica de evasión de obstáculos y Q-Learning para moverse en un entorno simulado de Gazebo.
+
 import rclpy
 from rclpy.node import Node
 from geometry_msgs.msg import Twist
@@ -5,7 +9,7 @@ from sensor_msgs.msg import LaserScan
 import random
 import numpy as np
 
-# --- DEFINICIÓN DE ACCIONES ---
+# En primer lugar definimos las posibles acciones del robot.
 # 0: Avanzar
 # 1: Girar Izquierda
 # 2: Girar Derecha
@@ -20,10 +24,10 @@ class RobotAprendiz(Node):
         # Suscriptor para leer el láser
         self.sub = self.create_subscription(LaserScan, '/scan', self.sensor_callback, 10)
         
-        # --- CEREBRO (TABLA Q) ---
+        #Incialización del cerebro (tabla Q)
         self.q_table = {}
         
-        # --- PARÁMETROS DE INTELIGENCIA ARTIFICIAL ---
+        # Configuramos los parámetros de aprendizaje de inteligencia artificial
         self.alpha = 0.5       # Tasa de aprendizaje (0.5 = aprende rápido)
         self.gamma = 0.9       # Factor de descuento (importancia del futuro)
         self.epsilon = 0.9     # Curiosidad inicial (90% aleatorio al principio)
@@ -35,7 +39,7 @@ class RobotAprendiz(Node):
         self.last_action = 0
         self.laser_data = None
         
-        # Timer: El robot piensa 2 veces por segundo (cada 0.5s)
+        # Timer: El robot piensa cada 0,5 segundos,
         self.timer = self.create_timer(0.5, self.ciclo_aprendizaje)
         
         self.get_logger().info('¡CEREBRO REINICIADO! El robot está listo para aprender.')
@@ -50,6 +54,7 @@ class RobotAprendiz(Node):
             
         ranges = self.laser_data.ranges
         # Definimos 3 zonas de visión (limitamos la distancia a 10m para evitar infinitos)
+        
         # Frente: Un cono de 60 grados delante
         frente = min(min(ranges[0:30]), min(ranges[330:360]), 10.0)
         # Izquierda: Un cono de 60 grados a la izquierda
@@ -94,14 +99,16 @@ class RobotAprendiz(Node):
         
         if distancia_minima < 0.25: # CASO 1: CHOQUE
             reward = -100
-            self.get_logger().error('¡CHOQUE! Castigo: -100')
+            self.get_logger().error('¡Choque! Castigo: -100')
             
         elif self.last_action == 0: # CASO 2: AVANZAR
             reward = 10  # ¡Gran premio por avanzar!
+            self.get_logger().info('¡Bien hecho! Avanzando. Premio: +10')
             
         else: # CASO 3: GIRAR
             reward = -2  # Pequeño castigo por girar (para que no se quede quieto siempre)
-
+            self.get_logger().warn('¡Continúe! Penalización leve: -2 ')
+            
         # 3. APRENDER (Actualizar Tabla Q)
         if self.last_state in self.q_table:
             old_value = self.q_table[self.last_state][self.last_action]
