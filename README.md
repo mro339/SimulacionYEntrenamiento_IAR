@@ -6,7 +6,7 @@ El proyecto implementa un algoritmo de navegación autónoma (Q-Learning / Evasi
 
 ---
 
-## Paso 0: Requisitos Previos:
+## Requisitos Previos:
 
 Para ejecutar este proyecto necesitas tener preinstalado el siguiente software:
 
@@ -16,11 +16,11 @@ Para ejecutar este proyecto necesitas tener preinstalado el siguiente software:
 
 ---
 
-### Instalación y Configuración
+## Instalación y Configuración
 
 Sigue estos pasos para preparar el entorno de simulación.
 
-## Paso 1: Instalar paquetes de TurtleBot3
+### Paso 1: Instalar paquetes de TurtleBot3
 Instalamos los paquetes necesarios para la simulación y el control del robot en ROS 2 Foxy:
 
 ```bash
@@ -32,7 +32,7 @@ A continuación, configuramos el modelo del robot (versión "Burger") en las var
 ```echo "export TURTLEBOT3_MODEL=burger" >> ~/.bashrc
 source ~/.bashrc
 ```
-## Paso 2: Lanzar el Escenario (Gazebo).
+### Paso 2: Lanzar el Escenario (Gazebo).
 No utilizaremos el mundo vacío por defecto. Cargaremos el escenario oficial de TurtleBot3 (turtlebot3_world), que incluye columnas y obstáculos geométricos ideales para el entrenamiento.
 Abriendo el términal, ejecuta:
 ```
@@ -40,7 +40,7 @@ Abriendo el términal, ejecuta:
 source /opt/ros/foxy/setup.bash
 ros2 launch turtlebot3_gazebo turtlebot3_world.launch.py
 ```
-## Paso 3: Ejecutar el Script de Control
+### Paso 3: Ejecutar el Script de Control
 El "cerebro" del robot es un script en Python que procesa los datos del láser y envía comandos de velocidad.
 
 Asegúrate de tener el archivo .py en tu carpeta (por ejemplo, robot_aprendiz.py o esquivar_obstaculos.py).
