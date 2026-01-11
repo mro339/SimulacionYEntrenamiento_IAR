@@ -56,4 +56,6 @@ Para posteriormente ejecutar el script, archivo python: "robot_aprendiz.py" para
 python3 robot_aprendiz.py
 ```
 
-Una vez realizado estos pasos, podemos observar como el robot va funcionando.
+Una vez realizado estos pasos, podemos observar como el robot va funcionando, aprendiendo.
+
+Los fundamentos, explicación y metodología se encuentra explicada en la memoria.
