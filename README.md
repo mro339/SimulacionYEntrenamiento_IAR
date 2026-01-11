@@ -25,29 +25,33 @@ Instalamos los paquetes necesarios para la simulación y el control del robot en
 
 ```bash
 sudo apt install ros-foxy-turtlebot3 ros-foxy-turtlebot3-msgs ros-foxy-turtlebot3-simulations ros-foxy-dynamixel-sdk -y
+```
 
 A continuación, configuramos el modelo del robot (versión "Burger") en las variables de entorno para que se cargue siempre al iniciar la terminal:
 
-echo "export TURTLEBOT3_MODEL=burger" >> ~/.bashrc
+```echo "export TURTLEBOT3_MODEL=burger" >> ~/.bashrc
 source ~/.bashrc
-
+```
 ## Paso 2: Lanzar el Escenario (Gazebo).
 No utilizaremos el mundo vacío por defecto. Cargaremos el escenario oficial de TurtleBot3 (turtlebot3_world), que incluye columnas y obstáculos geométricos ideales para el entrenamiento.
 Abriendo el términal, ejecuta:
-
+```
 # Asegúrate de tener el entorno de foxy cargado:
 source /opt/ros/foxy/setup.bash
 ros2 launch turtlebot3_gazebo turtlebot3_world.launch.py
-
+```
 ## Paso 3: Ejecutar el Script de Control
 El "cerebro" del robot es un script en Python que procesa los datos del láser y envía comandos de velocidad.
 
 Asegúrate de tener el archivo .py en tu carpeta (por ejemplo, robot_aprendiz.py o esquivar_obstaculos.py).
 
 Abre una nueva terminal y ejecuta el script:
-
+```
 # Cargar entorno ROS 2
 source /opt/ros/foxy/setup.bash
-
+```
+Para posteriormente ejecutar el archivo python: "robot_aprendiz.py" para poner en funcionamiento el robot.
+```
 # Ejecutar el nodo
 python3 robot_aprendiz.py
+```
