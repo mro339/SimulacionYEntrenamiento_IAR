@@ -1,7 +1,3 @@
-
-Lo destacado de la carpeta
-Códigos Python para un Robot Autónomo usan lógica de evasión de obstáculos y Q-Learning para moverse en un entorno simulado de Gazebo.
-
 import rclpy
 from rclpy.node import Node
 from geometry_msgs.msg import Twist
