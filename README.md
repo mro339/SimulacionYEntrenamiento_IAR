@@ -11,7 +11,7 @@ El proyecto implementa un algoritmo de navegación autónoma (Q-Learning / Evasi
 Para ejecutar este proyecto necesitas tener preinstalado el siguiente software:
 
 * **Sistema Operativo:** Ubuntu 20.04 (Nativo o WSL).
-* **Simulador:** Gazebo.
+* **Simulador:** Gazebo multi-robot simulator, version 11.15.1
 * **Middleware:** ROS 2 (Distribución **Foxy Fitzroy**).
 
 ---
