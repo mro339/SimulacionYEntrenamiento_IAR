@@ -15,6 +15,7 @@ class RobotAprendiz(Node):
     def __init__(self):
         super().__init__('robot_q_learning')
         
+        #Configurar la conexión con ROS 2:
         # Publicador para mover el robot
         self.pub = self.create_publisher(Twist, '/cmd_vel', 10)
         # Suscriptor para leer el láser
@@ -38,19 +39,18 @@ class RobotAprendiz(Node):
         # Timer: El robot piensa cada 0,5 segundos,
         self.timer = self.create_timer(0.5, self.ciclo_aprendizaje)
         
-        self.get_logger().info('¡CEREBRO REINICIADO! El robot está listo para aprender.')
+        self.get_logger().info('¡El robot está listo para aprender!')
 
     def sensor_callback(self, msg):
         self.laser_data = msg
 
     def obtener_estado(self):
-        """Traduce los 360 grados del láser a un estado simple de 3 bits"""
+        #Traduce los 360 grados del láser a un estado simple de 3 bits
         if self.laser_data is None:
             return "Desconocido"
             
         ranges = self.laser_data.ranges
         # Definimos 3 zonas de visión (limitamos la distancia a 10m para evitar infinitos)
-        
         # Frente: Un cono de 60 grados delante
         frente = min(min(ranges[0:30]), min(ranges[330:360]), 10.0)
         # Izquierda: Un cono de 60 grados a la izquierda
@@ -69,7 +69,7 @@ class RobotAprendiz(Node):
         return s_izq + s_frente + s_der
 
     def elegir_accion(self, state):
-        """Elige la mejor acción usando Epsilon-Greedy"""
+        #Elige la mejor acción usando Epsilon-Greedy
         # Si el estado es nuevo, lo añadimos a la tabla con valores a 0
         if state not in self.q_table:
             self.q_table[state] = [0.0, 0.0, 0.0]
@@ -81,15 +81,13 @@ class RobotAprendiz(Node):
             return np.argmax(self.q_table[state]) # La mejor acción aprendida
 
     def ciclo_aprendizaje(self):
-        """El bucle principal de la IA"""
         if self.laser_data is None:
             return
 
-        # 1. OBSERVAR: ¿Dónde estoy ahora?
+        # 1. OBSERVAR: Obtenemos el estado actual
         current_state = self.obtener_estado()
         
         # 2. CALCULAR RECOMPENSA (Basado en el resultado de la acción anterior)
-        # Aquí está la clave para que no sea un cobarde
         reward = 0
         distancia_minima = min(self.laser_data.ranges)
         
@@ -98,7 +96,7 @@ class RobotAprendiz(Node):
             self.get_logger().error('¡Choque! Castigo: -100')
             
         elif self.last_action == 0: # CASO 2: AVANZAR
-            reward = 10  # ¡Gran premio por avanzar!
+            reward = 10  
             self.get_logger().info('¡Bien hecho! Avanzando. Premio: +10')
             
         else: # CASO 3: GIRAR
