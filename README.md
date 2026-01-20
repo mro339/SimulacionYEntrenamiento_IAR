@@ -50,10 +50,28 @@ Abre una nueva terminal:
 # Cargar entorno ROS 2
 source /opt/ros/foxy/setup.bash
 ```
-Para posteriormente ejecutar el script, archivo python: "robot_aprendiz.py" para poner en funcionamiento el robot.
+Para posteriormente ejecutar el script, archivo python: "robot_aprendiz.py" para poner en funcionamiento el robot:
+
+1. Primero creamos el archivo python que vamos a utilizar:
 ```
-# Ejecutar el nodo
+#Creamos el archivo python
+nano robot_aprendiz.py
+```
+2. Copiamos el código del programa, y lo guardamos (Ctrl+O).
+3. Ejecutamos el código: 
+```
+# Ejecutar el código
 python3 robot_aprendiz.py
+```
+Si queremos ejecturar el script automático, en este caso el hiperparámetro: Épsilon, si queremos comprobar las demás variables se modificaría el código, para que itere el hiperparámetro deseado, sigue los mismos pasos:
+1. Creamos el archivo python
+```
+nano robot_aprendiz_epsilon_automatico.py
+```
+2. Copiamos el código del programa, y lo guardamos (Ctrl+O).
+3. Ejecutamos el código:
+```
+pyhton3 robot_aprendiz_epsilon_automatico.py
 ```
 
 Una vez realizado estos pasos, podemos observar como el robot va funcionando, aprendiendo.
