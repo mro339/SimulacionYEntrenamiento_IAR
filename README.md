@@ -66,7 +66,7 @@ nano robot_aprendiz.py
 # Ejecutamos el código
 python3 robot_aprendiz.py
 ```
-Si queremos ejecturar el script automático, en este caso el hiperparámetro: Épsilon, si queremos comprobar las demás variables se modificaría el código, para que itere el hiperparámetro deseado, sigue los mismos pasos:
+Si queremos ejecturar el script automático, en este caso el hiperparámetro: Épsilon, si queremos comprobar las demás hiperparámetro (Alpha (Factor de Aprendizaje) y Gamma(Factor de descuento)) se modificaría el código, para que itere el hiperparámetro deseado, y siguiendo los mismos pasos:
 1. Creamos el archivo python, en el caso que no lo hayamos cargado.
 ```
 nano robot_aprendiz_epsilon_automatico.py
