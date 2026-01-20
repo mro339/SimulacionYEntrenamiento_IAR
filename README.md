@@ -43,31 +43,31 @@ ros2 launch turtlebot3_gazebo turtlebot3_world.launch.py
 ### Paso 3: Ejecutar el Script de Control
 El "cerebro" del robot es un script en Python que procesa los datos del láser y envía comandos de velocidad.
 
-Abre una nueva terminal:
+Abre una nueva terminal, donde cargamos el entorno:
 ```
 # Cargar entorno ROS 2
 source /opt/ros/foxy/setup.bash
 ```
 
-Asegúrate de tener el archivo .py en tu carpeta (robot_aprendiz.py), por lo que únicamente se necesitaría ejecutar (Instrucción 3), o bien, sigue los pasos para la creación del script (Siguiendo la instrucciones 1 y 2).
+Asegúrate de tener el archivo .py en tu carpeta (robot_aprendiz.py), por lo que únicamente se necesitaría ejecutar el script (Siguiendo la instrucción 3). Por el contrario, si quieres crear el archivo, sigue los pasos para la creación del script (Siguiendo la instrucciones 1 y 2), para posteriormente ejecutarlo (Instruccion 3).
 
 #### Instrucciones de ejecución del script pyhton
-Para ejecutar el script, archivo python: "robot_aprendiz.py" para poner en funcionamiento el robot:
+Ejecutar el script, archivo python: "robot_aprendiz.py" para poner en funcionamiento el robot.
 
-En el caso donde no tenemos el archivo -py en nuestra carpeta.
+En el caso donde no tenemos el archivo .py en nuestra carpeta, y queremos directamente crearlo:
 1. Primero creamos el archivo python que vamos a utilizar:
 ```
 #Creamos el archivo python
 nano robot_aprendiz.py
 ```
-2. Copiamos el código del programa, y lo guardamos (Ctrl+O).
-3. Posteriormente ejecutamos el código: 
+2. Copiamos el código del programa, y lo guardamos (Ctrl+O). 
+3. Una vez tenemos el archivo, ejecutamos el código: 
 ```
-# Ejecutar el código
+# Ejecutamos el código
 python3 robot_aprendiz.py
 ```
 Si queremos ejecturar el script automático, en este caso el hiperparámetro: Épsilon, si queremos comprobar las demás variables se modificaría el código, para que itere el hiperparámetro deseado, sigue los mismos pasos:
-1. Creamos el archivo python
+1. Creamos el archivo python, en el caso que no lo hayamos cargado.
 ```
 nano robot_aprendiz_epsilon_automatico.py
 ```
