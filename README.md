@@ -43,22 +43,25 @@ ros2 launch turtlebot3_gazebo turtlebot3_world.launch.py
 ### Paso 3: Ejecutar el Script de Control
 El "cerebro" del robot es un script en Python que procesa los datos del láser y envía comandos de velocidad.
 
-Asegúrate de tener el archivo .py en tu carpeta (robot_aprendiz.py).
-
 Abre una nueva terminal:
 ```
 # Cargar entorno ROS 2
 source /opt/ros/foxy/setup.bash
 ```
-Para posteriormente ejecutar el script, archivo python: "robot_aprendiz.py" para poner en funcionamiento el robot:
 
+Asegúrate de tener el archivo .py en tu carpeta (robot_aprendiz.py), por lo que únicamente se necesitaría ejecutar (Instrucción 3), o bien, sigue los pasos para la creación del script (Siguiendo la instrucciones 1 y 2).
+
+#### Instrucciones de ejecución del script pyhton
+Para ejecutar el script, archivo python: "robot_aprendiz.py" para poner en funcionamiento el robot:
+
+En el caso donde no tenemos el archivo -py en nuestra carpeta.
 1. Primero creamos el archivo python que vamos a utilizar:
 ```
 #Creamos el archivo python
 nano robot_aprendiz.py
 ```
 2. Copiamos el código del programa, y lo guardamos (Ctrl+O).
-3. Ejecutamos el código: 
+3. Posteriormente ejecutamos el código: 
 ```
 # Ejecutar el código
 python3 robot_aprendiz.py
